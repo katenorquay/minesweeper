@@ -60,23 +60,30 @@ document.addEventListener("contextmenu", checkForWin);
 function checkForWin () {
 
    for (var i = 0; i < board.cells.length; i++) {
-
-if (board.cells[i].isMine === true && board.cells[i].isMarked === false) {
-   return;
- }
-}
-
+     if (board.cells[i].isMine === true && board.cells[i].isMarked === false) {
+       return;
+     }
+   }
  for (var i = 0; i < board.cells.length; i++) {
-if (board.cells[i].isMine === false && board.cells[i].hidden === true) {
-  return;
-}
-}
-
-  lib.displayMessage('You win!');
-  var winner = prompt("Play again?")
-  if (winner === yes) {
+     if (board.cells[i].isMine === false && board.cells[i].hidden === true) {
+       return;
   }
 }
+lib.displayMessage('You win!');
+var audioWin = document.getElementById('win');
+audioWin.play();
+var playAgain = prompt("You Win!!! Play Again?").toUpperCase();
+switch(playAgain) {
+  case 'YES':
+  location.reload ();
+}
+
+}
+
+//   lib.displayMessage('You win!');
+//   var winner = prompt("Play again?")
+//   }
+// }
 
 function countSurroundingMines (cell) {
   var surround = lib.getSurroundingCells(cell.row, cell.col);
