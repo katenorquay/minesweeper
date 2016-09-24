@@ -20,14 +20,13 @@ function createBoard(width, height) {
   var row = 0;
   for (i = 0; i < height; i++) {
     var col = 0;
-  for (j = 0; j < width; j++) {
-    var newCell = new cellConstructor(row, col, createMines(), false, true);
-    console.log(newCell)
-    board.cells.push(newCell);
-    col++;
+    for (j = 0; j < width; j++) {
+      var newCell = new cellConstructor(row, col, createMines(), false, true);
+      board.cells.push(newCell);
+      col++;
+    }
+    row++;
   }
-  row++;
-}
 };
 
 function createMines(randomMine) {
@@ -72,10 +71,10 @@ function checkForWin () {
 lib.displayMessage('You win!');
 var audioWin = document.getElementById('win');
 audioWin.play();
-var playAgain = prompt("You Win!!! Play Again?").toUpperCase();
+var playAgain = prompt("You Win!!! Play Again? YES or NO").toUpperCase();
 switch(playAgain) {
   case 'YES':
-  location.reload ();
+  location.reload ();  
 }
 
 }
